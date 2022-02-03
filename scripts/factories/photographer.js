@@ -1,25 +1,52 @@
-function photographerFactory(data) {
-    const { name, portrait, city } = data;
+// Récupération des données de photographers.json pour la création des cartes "photographe"
+// Afficher avec fonction displayData sur la page d'accueil
 
+function photographerFactory(data) {
+
+    // Déclaration des informations à récupérer
+    const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
+    // Création des différentes parties de la carte à afficher dans le DOM
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
+        const cardElement = document.createElement("article")
 
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        const cardWrapper = document.createElement("div")
+        cardWrapper.classList.add("cardWrapper")
 
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
+        const cardLocation = document.createElement("p")
+        cardLocation.classList.add("cardLocation")
+        cardLocation.innerHTML = city + ", " + country
+        
+        const cardQuote = document.createElement("p")
+        cardQuote.classList.add=("cardQuote")
+        cardQuote.innerHTML = tagline
+        
+        const cardPrice = document.createElement("p")
+        cardPrice.classList.add=("cardPrice")
+        cardPrice.innerHTML = price + "€/jour"
 
-        const h3 = document.createElement( "h3" );
-        h3.textContent = city;
+        const cardAnchor = document.createElement("a")
+        cardAnchor.href = "photographer.html?id=" + id
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(h3);
+        const cardImg = document.createElement("img")
+        cardImg.setAttribute("src", picture)
 
-        return article;
+        const cardTitle = document.createElement("h2")
+        cardTitle.innerHTML = name
+
+        cardElement.appendChild(cardAnchor)
+        cardAnchor.appendChild(cardImg);
+        cardAnchor.appendChild(cardTitle);
+        cardElement.appendChild(cardWrapper)
+
+        cardWrapper.appendChild(cardLocation)
+        cardWrapper.appendChild(cardQuote)
+        cardWrapper.appendChild(cardPrice)
+
+        // On retourne la carte complète
+        return (cardElement);
     }
-    return { name, picture, getUserCardDOM }
+    // Avec les informations nécessaires
+    return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
