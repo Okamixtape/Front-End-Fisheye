@@ -1,6 +1,5 @@
-# Base de code du projet P6 - Parcours Front-end
+# Projet P6 - Parcours "Développeur d'application - JavaScript React"
 
-## Démarrer le projet
+## Démarrer le projet :
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+yarn install ou npm install

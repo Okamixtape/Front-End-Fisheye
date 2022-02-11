@@ -1,0 +1,26 @@
+///////////////////
+//               //
+// GLOBAL'S SCSS //
+//               //
+///////////////////
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  @include normal-font;
+  color: $text-color;
+  font-size: $text-size;
+  background: $bg-color;
+}
+
+main {
+  padding: 10px 100px;
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+}

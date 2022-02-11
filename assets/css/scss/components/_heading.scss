@@ -1,0 +1,17 @@
+//////////////////////////////
+//                          //
+// HEADING'S COMPONENT SCSS //
+//                          //
+//////////////////////////////
+
+.heading {
+  &__title {
+    color: $orange;
+    font-size: 64px;
+  }
+
+  &__subtitle {
+    color: $red;
+    font-size: 24px;
+  }
+}

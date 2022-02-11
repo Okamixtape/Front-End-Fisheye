@@ -1,0 +1,23 @@
+/////////////////////////////
+//                         //
+// BUTTON'S COMPONENT SCSS //
+//                         //
+/////////////////////////////
+
+.btn {
+  padding: 20px 20px;
+
+  @include medium-font;
+  font-size: 20px;
+  color: $white;
+  background: $red;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

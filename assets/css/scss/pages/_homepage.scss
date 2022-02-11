@@ -1,0 +1,17 @@
+/////////////////////
+//                 //
+// HOMEPAGE'S SCSS //
+//                 //
+/////////////////////
+
+.platform-homepage {
+  .homepage {
+    &__photographers {
+      margin-top: 80px;
+
+      .photographer-card {
+        margin-bottom: 80px;
+      }
+    }
+  }
+}

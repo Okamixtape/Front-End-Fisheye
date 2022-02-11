@@ -1,0 +1,44 @@
+////////////////////////
+//                    //
+// FONT'S MIXINS SCSS //
+//                    //
+////////////////////////
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../../../fonts/DMSans/DMSans-Bold.woff2") format("woff2"), url("../../../fonts/DMSans/DMSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/DMSans/DMSans-Regular.woff2") format("woff2"), url("../../../fonts/DMSans/DMSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/DMSans/DMSans-Medium.woff2") format("woff2"), url("../../../fonts/DMSans/DMSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@mixin normal-font {
+  font-family: "DM Sans";
+  font-weight: normal;
+}
+
+@mixin medium-font {
+  font-family: "DM Sans";
+  font-weight: 500;
+}
+
+@mixin bold-font {
+  font-family: "DM Sans";
+  font-weight: bold;
+}
