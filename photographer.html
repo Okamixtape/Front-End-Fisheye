@@ -15,7 +15,7 @@
     <header class="platform-header">
       <div class="header__wrapper">
         <a href="/">
-          <img src="./assets/img/logo.png" alt="Page d'accueil Fisheye" class="header__logo" />
+          <img src="./assets/img/logo.png" alt="Page photographe Fisheye" class="header__logo" />
         </a>
       </div>
     </header>
@@ -23,8 +23,28 @@
     <main class="platform-photographer">
 
       <section class="photographer__infos">
-        <div class="infos__wrapper">
-          <button class="btn infos__button">Contactez-moi</button>
+        <div class="infos__wrapper"></div>
+      </section>
+
+      <section class="photographer__pictures">
+
+        <div class="pictures__header">
+          <form class="platform-form">
+
+            <div class="form__row">
+              <label for="sort">Trier par</label>
+              <select id="sort" name="sort">
+                <option name="popularity">Popularité</option>
+                <option name="date">Date</option>
+                <option name="title">Titre</option>
+              </select>
+            </div>
+            
+          </form>
+        </div>
+
+        <div class="pictures__body">
+
         </div>
       </section>
 

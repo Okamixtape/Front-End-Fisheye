@@ -8,7 +8,7 @@ class Homepage {
     this.photographers = []
   }
 
-  // Initialisation
+  // Initialisation asynchrone (on attends de récupérer les données pour les afficher)
   init = async () => {
     this.photographers = await this.getPhotographers()
     this.displayPhotographers()

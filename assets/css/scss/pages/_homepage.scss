@@ -8,9 +8,11 @@
   .homepage {
     &__photographers {
       margin-top: 80px;
+      @include column-flex-wrap;
 
       .photographer-card {
         margin-bottom: 80px;
+        @include columns-grid(4);
       }
     }
   }
