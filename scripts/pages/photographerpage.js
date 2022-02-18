@@ -1,4 +1,4 @@
-import createElement from "../factories/photographerFactory.js"
+import createElement from "../factory.js"
 import { fetchData } from "../utils/fetchData.js"
 
 // Création de l'objet "Photographerpage" pour y récupérer données et les afficher
@@ -15,9 +15,10 @@ class Photographerpage {
     if (!this.photographerId) this.redirect()
 
     this.photographer = await this.getPhotographer()
-    this.pictures = await this.getPictures()
+    this.medias = await this.getMedias()
 
     this.displayPhotographer()
+    this.displayMedias()
 
     this.initModal()
   }
@@ -37,19 +38,30 @@ class Photographerpage {
     return createElement("Photographer", photographer)
   }
 
-  // Fonction permettant de récupérer les données du fichier medias.json
-  getPictures = async () => {
-    const pictures = await fetchData("../../data/medias.json")
-    const photographerPictures = pictures.media.filter((m) => m.photographerId === this.photographerId)
+  // Fonction permettant de récupérer les chemins vers les photos/vidéos pour créer les cartes médias
+  getMedias = async () => {
+    const allMedias = await fetchData("../../data/medias.json")
+    const photographerMedias = allMedias.media.filter((m) => m.photographerId === this.photographerId)
 
-    return photographerPictures
+    let medias = []
+
+    photographerMedias.forEach((p) => medias.push(createElement("Media", p)))
+
+    return medias
   }
 
-  // Fonction permettant d'afficher les données dans le DOM
+  // Fonction permettant d'afficher les infos des photographes dans le DOM 
   displayPhotographer = () => {
     const infoSection = document.querySelector(".infos__wrapper")
 
     infoSection.innerHTML = this.photographer.photographerInfos()
+  }
+
+  // Fonction permettant d'afficher les médias des photographes dans le DOM
+  displayMedias = () => {
+    const mediasBody = document.querySelector(".medias__list")
+
+    this.medias.forEach((p) => (mediasBody.innerHTML += p.mediaCard()))
   }
 
   // Initialisation de la modale "formulaire"

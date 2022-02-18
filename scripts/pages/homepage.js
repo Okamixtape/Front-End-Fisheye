@@ -1,4 +1,4 @@
-import createElement from "../factories/photographerFactory.js"
+import createElement from "../factory.js"
 import { fetchData } from "../utils/fetchData.js"
 
 // Création de l'objet "Homepage" pour y récupérer données et les afficher
