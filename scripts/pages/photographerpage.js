@@ -1,4 +1,6 @@
 import createElement from "../factory.js"
+import Lightbox from "../components/lightbox.js"
+import Modal from "../components/modal.js"
 import { fetchData } from "../utils/fetchData.js"
 
 // Création de l'objet "Photographerpage" pour y récupérer données et les afficher
@@ -7,20 +9,25 @@ class Photographerpage {
   constructor() {
     this.photographer = {}
     this.photographerId = parseInt(window.location.search.split("?id=")[1])
+
+    this.modal = null
   }
 
   // Redirection vers URL du photographe
   // Initialisation asynchrone (on attends de récupérer les données pour les afficher)
   init = async () => {
-    if (!this.photographerId) this.redirect()
+    if (this.photographerId === isNaN || !this.photographerId) this.redirect()
 
     this.photographer = await this.getPhotographer()
     this.medias = await this.getMedias()
 
     this.displayPhotographer()
-    this.displayMedias()
 
-    this.initModal()
+    Modal.init(this.photographer)
+    Lightbox.init(this.medias)
+
+    this.displayMedias()
+    this.lightboxBehaviour()
   }
 
   // Fonction de redirection vers l'URL avec l'ID du photographe
@@ -64,25 +71,10 @@ class Photographerpage {
     this.medias.forEach((p) => (mediasBody.innerHTML += p.mediaCard()))
   }
 
-  // Initialisation de la modale "formulaire"
-  initModal = () => {
-    this.modal = document.querySelector(".photographer__modal")
+  lightboxBehaviour = () => {
+    const medias = document.querySelectorAll(".media-card .card__media")
 
-    const modalBtn = document.querySelector(".infos__button")
-    const modalCloseBtn = document.querySelector(".modal__close")
-
-    modalBtn.addEventListener("click", this.openModal)
-    modalCloseBtn.addEventListener("click", this.closeModal)
-  }
-
-  // Fonction permettant de l'ouvrir
-  openModal = () => {
-    this.modal.classList.add("opened")
-  }
-
-  // Et de la fermer
-  closeModal = () => {
-    this.modal.classList.remove("opened")
+    medias.forEach((m) => m.addEventListener("click", () => Lightbox.openLightbox(m.parentElement)))
   }
 }
 

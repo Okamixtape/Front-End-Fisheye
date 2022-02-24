@@ -101,6 +101,7 @@
 
       .modal {
         &__wrapper {
+          position: relative;
           margin: 5% auto;
           padding: 15px 35px;
           max-width: 670px;
@@ -110,14 +111,13 @@
         }
 
         &__header {
-          display: flex;
           margin-bottom: 20px;
-
-          align-items: center;
-          justify-content: space-between;
         }
 
         &__close {
+          position: absolute;
+          top: 35px;
+          right: 35px;
           width: 42px;
           height: 42px;
 
@@ -127,6 +127,7 @@
 
         &__title {
           font-size: 64px;
+          line-height: 1.2;
         }
 
         &__button {
