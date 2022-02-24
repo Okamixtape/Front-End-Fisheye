@@ -1,4 +1,4 @@
-// Constructeur "Route" permettant de créer chaque 
+// Constructeur "Route" permettant de créer chaque route
 
 class Route {
   constructor() {

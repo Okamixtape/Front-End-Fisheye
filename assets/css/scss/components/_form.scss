@@ -16,12 +16,14 @@
       label {
         display: inline-block;
         margin-right: 25px;
+        margin-bottom: 5px;
 
-        font-size: 18px;
+        font-size: 30px;
         color: $black-light;
       }
 
-      input {
+      input,
+      textarea {
         width: 100%;
         padding: 15px 10px;
 
@@ -29,6 +31,10 @@
         background: $white;
         font-size: 18px;
         border-radius: 5px;
+      }
+
+      textarea {
+        resize: none;
       }
 
       select {
