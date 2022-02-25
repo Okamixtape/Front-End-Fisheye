@@ -11,9 +11,10 @@ class Route {
 
   get = () => {
     for (const r of this.routes) {
-      if (window.location.pathname.includes(r.path)) return r.page.init()
+      if (window.location.pathname.includes(r.path)) return new r.page().init()
     }
   }
 }
 
+// Exportation du constructor Route
 export default new Route()

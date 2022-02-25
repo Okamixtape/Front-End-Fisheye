@@ -32,4 +32,4 @@ class Homepage {
   }
 }
 
-export default new Homepage()
+export default Homepage

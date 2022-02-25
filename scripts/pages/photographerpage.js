@@ -22,12 +22,10 @@ class Photographerpage {
     this.medias = await this.getMedias()
 
     this.displayPhotographer()
-
-    Modal.init(this.photographer)
-    Lightbox.init(this.medias)
-
     this.displayMedias()
-    this.lightboxBehaviour()
+
+    new Modal().init(this.photographer)
+    new Lightbox().init(this.medias)
   }
 
   // Fonction de redirection vers l'URL avec l'ID du photographe
@@ -70,12 +68,6 @@ class Photographerpage {
 
     this.medias.forEach((p) => (mediasBody.innerHTML += p.mediaCard()))
   }
-
-  lightboxBehaviour = () => {
-    const medias = document.querySelectorAll(".media-card .card__media")
-
-    medias.forEach((m) => m.addEventListener("click", () => Lightbox.openLightbox(m.parentElement)))
-  }
 }
 
-export default new Photographerpage()
+export default Photographerpage

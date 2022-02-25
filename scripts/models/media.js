@@ -1,3 +1,5 @@
+// Création du constructor "Media" qui inclut les cartes "photoCard" et "videoCard"
+
 class Media {
     constructor({ id, photographerId, title, image, video, likes, date, price }) {
         this.id = id
@@ -11,28 +13,14 @@ class Media {
         this.date = date
         this.price = price
     }
-
-    // mediaCard = () => {
-    //     let mediaHTML = `<article class="media-card">
-    //                         <div class="card__wrapper">
-    //                             <div class="card__media">this.image
-    //                                 ? <img src="${this.image}" class="card__image" alt="${this.title}" />
-    //                                 : <video class="card__video"><source src="${this.video}" type="video/webm"></video>
-    //                             </div>
-    //                             <div class="card__infos">
-    //                                 <h3 class="card__title">${this.title}</h3>
-    //                                 <button class="card__likes">${this.likes}</button>
-    //                             </div>
-    //                         </div>
-    //                     </article>`
-
-    //     return mediaHTML
-    // }
     
+    // Opérateur (ternaire) conditionnel
+    // SI condition vaut true, ça renvoit this.videoCard() dans le cas contraire, ça renverra this.photoCard()
     mediaCard = () => {
         return this.video ? this.videoCard() : this.photoCard()
     }
 
+    // Carte photo
     photoCard = () => {
         let photoHTML = `<article class="media-card photo">
                             <div class="card__media">
@@ -47,6 +35,7 @@ class Media {
         return photoHTML
     }
     
+    // Carte vidéo
     videoCard = () => {
         let videoHTML = `<article class="media-card video">
                             <div class="card__media">
@@ -65,4 +54,5 @@ class Media {
     }
 }
 
+// Exportation du constructor Media
 export default Media

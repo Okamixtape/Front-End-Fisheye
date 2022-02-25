@@ -1,19 +1,33 @@
+// Création du constructor "Lightbox" qui inclut une fonction de comportement "lightboxBehavior"
+
 class Lightbox {
     constructor() {
-        this.lightbox
+        this.lightbox = document.querySelector('.lightbox')
     
         this.medias = []
         this.currentMedia = {}
         this.currentMediaIndex
     }
 
-    // Initialisation des fonctions d'affichage et de comportement du constuctor Lightbox
+    // Initialisation des fonctions d'affichage et du comportement du constuctor Lightbox
     // param : medias (photos et vidéos)
     init = async (medias) => {
         this.medias = medias
 
-        this.lightboxCard()
-        this.lightboxBehaviour()
+        this.lightboxBehavior()
+    }
+
+    // Fonction globale du comportement de la lightbox (ouverture, fermeture, flèche avant et arrière)
+    lightboxBehavior = () => {
+        const medias = document.querySelectorAll(".media-card .card__media")
+        const close = this.lightbox.querySelector(".lightbox__close")
+        const previous = this.lightbox.querySelector(".lightbox__previous")
+        const next = this.lightbox.querySelector(".lightbox__next")
+
+        medias.forEach((m) => m.addEventListener("click", () => this.openLightbox(m.parentElement)))
+        close.addEventListener("click", this.closeLightbox)
+        previous.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex - 1))
+        next.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex + 1))
     }
 
     // Fonction permettant l'ouverture de la lightbox
@@ -29,39 +43,12 @@ class Lightbox {
         this.lightbox.classList.remove("opened")
     }
 
-    // Fonction globale du comportement de la lightbox (ouverture, fermeture, flèche avant et arrière)
-    lightboxBehaviour = () => {
-        const close = this.lightbox.querySelector(".lightbox__close")
-        const previous = this.lightbox.querySelector(".lightbox__previous")
-        const next = this.lightbox.querySelector(".lightbox__next")
-
-        close.addEventListener("click", this.closeLightbox)
-        previous.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex - 1))
-        next.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex + 1))
-    }
-
-    // Fonction permettant d'afficher la lightbox des médias dans le DOM
-    lightboxCard = () => {
-        const lightboxWrapper = document.querySelector("main.platform-photographer")
-
-        let lightboxHTML = `<div class="lightbox">
-                                <div class="lightbox__previous"></div>
-                                <div class="lightbox__media"></div>
-                                <div class="lightbox__next"></div>
-                                <div class="lightbox__close"></div>
-                            </div>`
-
-        lightboxWrapper.innerHTML += lightboxHTML
-
-        this.lightbox = document.querySelector(".lightbox")
-    }
-
-    // Fonction permettant de créer l'index pour utiliser les flèches avant et arrière
+    // Fonction permettant de créer l'index de base pour utiliser les flèches avant et arrière
     setMediaIndex = (i) => {
         if (i < 0) i = this.medias.length - 1
         if (i === this.medias.length) i = 0
 
-        this.resetMedia()
+        this.refreshMedia()
 
         this.currentMediaIndex = i
         this.currentMedia = this.medias[i]
@@ -70,7 +57,7 @@ class Lightbox {
     }
 
     // Fonction permettant de mettre à jour la sélection des médias
-    resetMedia = () => {
+    refreshMedia = () => {
         const mediaWrapper = document.querySelector(".lightbox__media")
 
         mediaWrapper.innerHTML = ""
@@ -88,5 +75,5 @@ class Lightbox {
         mediaWrapper.innerHTML += mediaHTML + title
     }
 }
-    
-    export default new Lightbox()
+
+export default Lightbox

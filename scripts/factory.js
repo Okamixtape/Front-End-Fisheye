@@ -1,3 +1,5 @@
+// Importation des deux constructors principaux de la plateforme
+
 import Photographer from "./models/photographer.js"
 import Media from "./models/media.js"
 
@@ -12,4 +14,5 @@ const createElement = (type, attr) => {
   return new platformElement(attr)
 }
 
+// Exportation de la fonction permettant la création d'éléments
 export default createElement

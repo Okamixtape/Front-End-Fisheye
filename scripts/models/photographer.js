@@ -1,4 +1,4 @@
-// Création de l'objet "Photographer" et de sa carte "photographerCard"
+// Création du constructor "Photographer" qui inclut les cartes "photographerCard" et "photographerInfos"
 
 class Photographer {
   constructor({ id, name, city, country, tagline, price, portrait }) {
@@ -44,4 +44,5 @@ class Photographer {
   }
 }
 
+// Exportation du constructor Photographer
 export default Photographer
