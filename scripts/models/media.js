@@ -5,10 +5,10 @@ class Media {
         this.id = id
         this.photographerId = photographerId
         this.title = video ? "Vidéo" : title
-        this.image = image ? `../../assets/medias/medias/${image}` : null
-        this.video = video ? `../../assets/medias/medias/${video}` : null
-        this.fullImage = image ? `../../assets/medias/medias/${image}` : null
-        this.fullVideo = video ? `../../assets/medias/medias/${video}` : null
+        this.image = image ? `./assets/medias/medias/${image}` : null
+        this.video = video ? `./assets/medias/medias/${video}` : null
+        this.fullImage = image ? `./assets/medias/medias/${image}` : null
+        this.fullVideo = video ? `./assets/medias/medias/${video}` : null
         this.likes = likes
         this.date = date
         this.price = price
