@@ -16,5 +16,4 @@ class Route {
   }
 }
 
-// Exportation du constructor Route
 export default new Route()

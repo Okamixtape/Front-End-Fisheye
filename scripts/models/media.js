@@ -4,7 +4,7 @@ class Media {
     constructor({ id, photographerId, title, image, video, likes, date, price }) {
         this.id = id
         this.photographerId = photographerId
-        this.title = title || ""
+        this.title = video ? "Vidéo" : title
         this.image = image ? `../../assets/medias/medias/${image}` : null
         this.video = video ? `../../assets/medias/medias/${video}` : null
         this.fullImage = image ? `../../assets/medias/medias/${image}` : null
@@ -54,5 +54,4 @@ class Media {
     }
 }
 
-// Exportation du constructor Media
 export default Media

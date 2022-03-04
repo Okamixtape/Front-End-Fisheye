@@ -14,5 +14,4 @@ const createElement = (type, attr) => {
   return new platformElement(attr)
 }
 
-// Exportation de la fonction permettant la création d'éléments
 export default createElement

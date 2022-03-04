@@ -18,7 +18,7 @@
         margin-right: 25px;
         margin-bottom: 5px;
 
-        font-size: 30px;
+        font-size: 36px;
         color: $black-light;
       }
 
@@ -46,6 +46,12 @@
         border-radius: 5px;
         background: $red;
         color: $white;
+        transition: ease-in-out 0.2s;
+
+        &:focus {
+          background: $red-light;
+          color: $black;
+        }
       }
     }
   }

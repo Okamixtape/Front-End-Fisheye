@@ -15,7 +15,7 @@ class Photographer {
   photographerCard = () => {
     let cardHTML = `<article class="photographer-card">
                       <div class="card__wrapper">
-                        <a href="/photographer.html?id=${this.id}">
+                        <a href="./photographer.html?id=${this.id}">
                           <div class="card__media">
                             <img src="${this.portrait}" alt="${this.name}" class="card__image" />
                           </div>
@@ -42,7 +42,18 @@ class Photographer {
 
     return infosHTML
   }
+
+  // Carte prix et likes du photographe de la page photographerpage
+  photographerDetailsCard = (totalLikes) => {
+    let detailsHTML = `<div class="photographer__details">
+                      <div class="details__wrapper">
+                        <p class="details__likes">${totalLikes}</p>
+                        <p class="details__price">${this.price}&euro; / jour</p>
+                      </div>
+                    </div>`
+
+    return detailsHTML
+  }
 }
 
-// Exportation du constructor Photographer
 export default Photographer

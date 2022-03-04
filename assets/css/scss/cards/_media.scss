@@ -72,6 +72,16 @@
             color: $black;
             border: none;
             background: none;
+            transition: ease-in-out 0.2s;
+            cursor: pointer;
+            
+            &.liked {
+                color: $red;
+        
+                &::after {
+                    transform: translateY(-50%) scale(1.2);
+                }
+            }
 
             &::after {
                 content: "";
@@ -83,6 +93,7 @@
 
                 background: url("../img/icons/heart.svg") 100%/100% no-repeat;
                 transform: translateY(-50%);
+                transition: ease-in-out 0.2s;
             }
         }
 

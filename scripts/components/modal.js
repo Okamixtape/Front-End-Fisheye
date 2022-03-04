@@ -16,16 +16,33 @@ class Modal {
 
     // Attribution des fonctions d'ouverture et fermeture de la modale à l'écoute du clique
     modalBehavior = () => {
+        const form = this.modal.querySelector("form")
         const open = document.querySelector(".infos__button")
         const close = this.modal.querySelector(".modal__close")
     
+        form.addEventListener("submit", this.submitForm)
         open.addEventListener("click", this.openModal)
         close.addEventListener("click", this.closeModal)
     }
 
+    // Fonction permettant de soumettre le formulaire
+    submitForm = (e) => {
+        e.preventDefault()
+    
+        const form = {
+            firstname: e.target.querySelector("#firstname").value,
+            lastname: e.target.querySelector("#lastname").value,
+            email: e.target.querySelector("#email").value,
+            message: e.target.querySelector("#message").value,
+        }
+        
+        console.log(form)
+    }
+
     // Carte modale de contact (mise dans une promesse pour être utilisé indépendamment de la lightbox)
     modalCard = () => {
-        return new Promise((timeControl) => {
+        // Promesse permettant le traitement asynchrone des évènements de la page
+        return new Promise((resolve) => {
             const wrapper = document.querySelector(".platform-photographer")
 
             let modalHTML = `<div class="photographer__modal">
@@ -63,9 +80,11 @@ class Modal {
                                 </div>
                             </div>`
 
+            // Injection dans le DOM
             wrapper.innerHTML += modalHTML
 
-            timeControl(document.querySelector(".photographer__modal"))
+            // Résolution de la promesse
+            resolve(document.querySelector(".photographer__modal"))
         })
     }
 

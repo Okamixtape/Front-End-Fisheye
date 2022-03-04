@@ -1,6 +1,7 @@
 import createElement from "../factory.js"
 import Lightbox from "../components/lightbox.js"
 import Modal from "../components/modal.js"
+import Sortlist from "../components/sortlist.js"
 import { fetchData } from "../utils/fetchData.js"
 
 // Création de l'objet "Photographerpage" pour y récupérer données et les afficher
@@ -10,7 +11,7 @@ class Photographerpage {
     this.photographer = {}
     this.photographerId = parseInt(window.location.search.split("?id=")[1])
 
-    this.modal = null
+    this.medias
   }
 
   // Redirection vers URL du photographe
@@ -23,6 +24,9 @@ class Photographerpage {
 
     this.displayPhotographer()
     this.displayMedias()
+
+    const sortlist = new Sortlist()
+    sortlist.init(this.medias)
 
     new Modal().init(this.photographer)
     new Lightbox().init(this.medias)
@@ -58,8 +62,11 @@ class Photographerpage {
   // Fonction permettant d'afficher les infos des photographes dans le DOM 
   displayPhotographer = () => {
     const infoSection = document.querySelector(".infos__wrapper")
+    const pageWrapper = document.querySelector(".platform-photographer")
+    const totalLikes = this.medias.reduce((a, b) => +a + +b.likes, 0)
 
     infoSection.innerHTML = this.photographer.photographerInfos()
+    pageWrapper.innerHTML += this.photographer.photographerDetailsCard(totalLikes)
   }
 
   // Fonction permettant d'afficher les médias des photographes dans le DOM

@@ -17,13 +17,23 @@ class Lightbox {
         this.lightboxBehavior()
     }
 
-    // Fonction globale du comportement de la lightbox (ouverture, fermeture, flèche avant et arrière)
+    // Fonction globale du comportement de la lightbox (ouverture, fermeture, flèche avant et arrière, affichage en fonction du tri)
     lightboxBehavior = () => {
+        const list = document.querySelector('.medias__list')
         const medias = document.querySelectorAll(".media-card .card__media")
         const close = this.lightbox.querySelector(".lightbox__close")
         const previous = this.lightbox.querySelector(".lightbox__previous")
         const next = this.lightbox.querySelector(".lightbox__next")
 
+        // Affichage des cartes médias en fonction de la liste de tri
+        list.addEventListener("sortListDisplay", () => {
+            document.querySelectorAll(".media-card .card__media").forEach((m) => {
+                m.addEventListener("click", () => this.open(m.parentElement))
+                m.addEventListener("keyup", (e) => e.key === "Enter" && this.open(m.parentElement))
+            })
+        })
+
+        // Ajout des écouteurs d'évènements
         medias.forEach((m) => m.addEventListener("click", () => this.openLightbox(m.parentElement)))
         close.addEventListener("click", this.closeLightbox)
         previous.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex - 1))
@@ -32,6 +42,7 @@ class Lightbox {
 
     // Fonction permettant l'ouverture de la lightbox
     openLightbox = (media) => {
+        // Déclaration de l'index
         const mediaIndex = [...media.parentElement.children].indexOf(media)
 
         this.setMediaIndex(mediaIndex)
@@ -48,6 +59,7 @@ class Lightbox {
         if (i < 0) i = this.medias.length - 1
         if (i === this.medias.length) i = 0
 
+        // Rafraichissement de la lightbox
         this.refreshMedia()
 
         this.currentMediaIndex = i
@@ -60,6 +72,7 @@ class Lightbox {
     refreshMedia = () => {
         const mediaWrapper = document.querySelector(".lightbox__media")
 
+        // Rafraichissement en injectant rien = ""
         mediaWrapper.innerHTML = ""
     }
 
@@ -72,6 +85,7 @@ class Lightbox {
         const title = `<h2 class="lightbox__title heading__subtitle">${this.currentMedia.title}</h2>`
         const mediaHTML = this.currentMedia.video ? video : image
 
+        // Injection dans le DOM
         mediaWrapper.innerHTML += mediaHTML + title
     }
 }
