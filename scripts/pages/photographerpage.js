@@ -39,7 +39,7 @@ class Photographerpage {
 
   // Fonction permettant de récupèrer l'ID du photographe pour créer sa carte infos
   getPhotographer = async () => {
-    const photographers = await fetchData("../../data/photographers.json")
+    const photographers = await fetchData("../data/photographers.json")
     const photographer = photographers.photographers.find((p) => p.id === this.photographerId)
 
     if (!photographer) this.redirect()
@@ -49,7 +49,7 @@ class Photographerpage {
 
   // Fonction permettant de récupérer les chemins vers les photos/vidéos pour créer les cartes médias
   getMedias = async () => {
-    const allMedias = await fetchData("../../data/medias.json")
+    const allMedias = await fetchData("../data/medias.json")
     const photographerMedias = allMedias.media.filter((m) => m.photographerId === this.photographerId)
 
     let medias = []
