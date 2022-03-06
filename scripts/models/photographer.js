@@ -15,7 +15,7 @@ class Photographer {
   photographerCard = () => {
     let cardHTML = `<article class="photographer-card">
                       <div class="card__wrapper">
-                        <a href="./photographer.html?id=${this.id}">
+                        <a href="./photographer.html?id=${this.id}" aria-label="${this.name}">
                           <div class="card__media">
                             <img src="${this.portrait}" alt="${this.name}" class="card__image" />
                           </div>

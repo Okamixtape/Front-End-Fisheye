@@ -4,6 +4,7 @@ class Media {
     constructor({ id, photographerId, title, image, video, likes, date, price }) {
         this.id = id
         this.photographerId = photographerId
+        // Opérateur (ternaire) conditionnel
         this.title = video ? "Vidéo" : title
         this.image = image ? `./assets/medias/medias/${image}` : null
         this.video = video ? `./assets/medias/medias/${video}` : null

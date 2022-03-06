@@ -25,9 +25,7 @@ class Photographerpage {
     this.displayPhotographer()
     this.displayMedias()
 
-    const sortlist = new Sortlist()
-    sortlist.init(this.medias)
-
+    new Sortlist(this.medias)
     new Modal().init(this.photographer)
     new Lightbox().init(this.medias)
   }

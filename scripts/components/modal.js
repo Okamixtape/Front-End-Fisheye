@@ -36,7 +36,7 @@ class Modal {
             message: e.target.querySelector("#message").value,
         }
         
-        console.log(form)
+        console.table(form)
     }
 
     // Carte modale de contact (mise dans une promesse pour être utilisé indépendamment de la lightbox)

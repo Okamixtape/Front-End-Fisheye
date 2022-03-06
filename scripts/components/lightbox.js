@@ -3,6 +3,7 @@
 class Lightbox {
     constructor() {
         this.lightbox = document.querySelector('.lightbox')
+        this.isLightboxOpen = false
     
         this.medias = []
         this.currentMedia = {}
@@ -25,15 +26,15 @@ class Lightbox {
         const previous = this.lightbox.querySelector(".lightbox__previous")
         const next = this.lightbox.querySelector(".lightbox__next")
 
-        // Affichage des cartes médias en fonction de la liste de tri
-        list.addEventListener("sortListDisplay", () => {
+        // Affichage de la liste des cartes médias dans lightbox
+        list.addEventListener("display", () => {
             document.querySelectorAll(".media-card .card__media").forEach((m) => {
-                m.addEventListener("click", () => this.open(m.parentElement))
-                m.addEventListener("keyup", (e) => e.key === "Enter" && this.open(m.parentElement))
+                m.addEventListener("click", () => this.openLightbox(m.parentElement))
+                m.addEventListener("keyup", (e) => e.key === "Enter" && this.openLightbox(m.parentElement))
             })
         })
 
-        // Ajout des écouteurs d'évènements
+        // Ajout des écouteurs d'évènements (commandes d'accessitilitté)
         medias.forEach((m) => m.addEventListener("click", () => this.openLightbox(m.parentElement)))
         close.addEventListener("click", this.closeLightbox)
         previous.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex - 1))
@@ -83,6 +84,7 @@ class Lightbox {
         const image = `<img src="${this.currentMedia.fullImage}" class="lightbox__image" alt="${this.currentMedia.title}" />`
         const video = `<video controls class="lightbox__video"><source src="${this.currentMedia.fullVideo}" type="video/webm"></video>`
         const title = `<h2 class="lightbox__title heading__subtitle">${this.currentMedia.title}</h2>`
+        // Opérateur (ternaire) conditionnel
         const mediaHTML = this.currentMedia.video ? video : image
 
         // Injection dans le DOM
