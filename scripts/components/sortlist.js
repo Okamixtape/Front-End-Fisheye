@@ -90,9 +90,20 @@ class Sortlist {
     // Attribution du comportement des boutons "likes"
     // Opérateur (ternaire) conditionnel avec la classe "liked"
     likeBehavior = (e) => {
-        const btn = e.target
+        const btn = e.target;
+        const totalCount = document.querySelector('.details__likes');
 
-        btn.classList.contains("liked") ? btn.textContent-- && btn.classList.remove("liked") : btn.textContent++ && btn.classList.add("liked")
+        if (btn.classList.contains("liked")) {
+            btn.textContent-- && btn.classList.remove("liked");
+            totalCount.textContent--;
+        }
+
+        else {
+            btn.textContent++ && btn.classList.add("liked");
+            totalCount.textContent++;
+        }
+
+        console.log(btn)
     }
 }
 

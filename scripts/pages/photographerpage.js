@@ -57,7 +57,7 @@ class Photographerpage {
     return medias
   }
 
-  // Fonction permettant d'afficher les infos des photographes dans le DOM 
+  // Fonction permettant d'afficher les infos de la carte "detailsCard" des photographes dans le DOM 
   displayPhotographer = () => {
     const infoSection = document.querySelector(".infos__wrapper")
     const pageWrapper = document.querySelector(".platform-photographer")
@@ -65,6 +65,8 @@ class Photographerpage {
 
     infoSection.innerHTML = this.photographer.photographerInfos()
     pageWrapper.innerHTML += this.photographer.photographerDetailsCard(totalLikes)
+
+    console.log(totalLikes)
   }
 
   // Fonction permettant d'afficher les médias des photographes dans le DOM
