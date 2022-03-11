@@ -56,7 +56,7 @@ class Lightbox {
             if (this.isLightboxOpen) {
                 e.key === "ArrowLeft" && this.setMedia(this.currentMediaIndex - 1)
                 e.key === "ArrowRight" && this.setMedia(this.currentMediaIndex + 1)
-                e.key === "Escape" && this.close()
+                e.key === "Escape" && this.closeLightbox()
             }
         })
     }
