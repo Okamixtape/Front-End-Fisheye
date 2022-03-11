@@ -24,12 +24,12 @@ class Media {
     // Carte photo
     photoCard = () => {
         let photoHTML = `<article class="media-card photo">
-                            <div class="card__media">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue complète">
                                 <img src="${this.image}" class="card__image" alt="${this.title}" />
                             </div>
                             <div class="card__infos">
                                 <h3 class="card__title">${this.title}</h3>
-                                <button class="card__likes">${this.likes}</button>
+                                <button class="card__likes" aria-label="${this.likes} personnes aiment cette photo">${this.likes}</button>
                             </div>
                         </article>`
 
@@ -39,7 +39,7 @@ class Media {
     // Carte vidéo
     videoCard = () => {
         let videoHTML = `<article class="media-card video">
-                            <div class="card__media">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue complète">
                                 <div class="card__overlay"></div>
                                 <video class="card__video">
                                     <source src="${this.video}" type="video/webm">
@@ -47,7 +47,7 @@ class Media {
                             </div>
                             <div class="card__infos">
                                 <h3 class="card__title">${this.title}</h3>
-                                <button class="card__likes">${this.likes}</button>
+                                <button class="card__likes" aria-label="${this.likes} personnes aiment cette vidéo">${this.likes}</button>
                             </div>
                         </article>`
 

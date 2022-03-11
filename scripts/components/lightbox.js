@@ -37,8 +37,28 @@ class Lightbox {
         // Ajout des écouteurs d'évènements (commandes d'accessitilitté)
         medias.forEach((m) => m.addEventListener("click", () => this.openLightbox(m.parentElement)))
         close.addEventListener("click", this.closeLightbox)
+
+        medias.forEach((m) => {
+            m.addEventListener("click", () => this.openLightbox(m.parentElement))
+            m.addEventListener("keyup", (e) => e.key === "Enter" && this.openLightbox(m.parentElement))
+
+            close.addEventListener("click", this.closeLightbox(m.parentElement))
+            close.addEventListener("keyup", (e) => e.key === "Enter" && this.closeLightbox(m.parentElement))
+        })
+        
         previous.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex - 1))
+        previous.addEventListener("keyup", (e) => e.key === "Enter" && this.setMediaIndex(this.currentMediaIndex - 1))
+
         next.addEventListener("click", () => this.setMediaIndex(this.currentMediaIndex + 1))
+        next.addEventListener("keyup", (e) => e.key === "Enter" && this.setMediaIndex(this.currentMediaIndex + 1))
+
+        window.addEventListener("keyup", (e) => {
+            if (this.isLightboxOpen) {
+                e.key === "ArrowLeft" && this.setMedia(this.currentMediaIndex - 1)
+                e.key === "ArrowRight" && this.setMedia(this.currentMediaIndex + 1)
+                e.key === "Escape" && this.close()
+            }
+        })
     }
 
     // Fonction permettant l'ouverture de la lightbox
@@ -47,11 +67,13 @@ class Lightbox {
         const mediaIndex = [...media.parentElement.children].indexOf(media)
 
         this.setMediaIndex(mediaIndex)
+        this.isLightboxOpen = true
         this.lightbox.classList.add("opened")
     }
 
     // Fonction permettant la fermeture de la lightbox
     closeLightbox = () => {
+        this.isLightboxOpen = false
         this.lightbox.classList.remove("opened")
     }
 
@@ -88,6 +110,7 @@ class Lightbox {
         const mediaHTML = this.currentMedia.video ? video : image
 
         // Injection dans le DOM
+        mediaWrapper.setAttribute("aria-label", this.currentMedia.title)
         mediaWrapper.innerHTML += mediaHTML + title
     }
 }

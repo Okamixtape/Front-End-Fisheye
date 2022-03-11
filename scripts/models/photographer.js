@@ -36,7 +36,7 @@ class Photographer {
                       <h1 class="infos__name heading__title">${this.name}</h1>
                       <h2 class="infos__country heading__subtitle">${this.country}</h2>
                       <p class="infos__tagline">${this.tagline}</p></div>
-                      <button class="btn infos__button">Contactez-moi</button>
+                      <button class="btn infos__button" aria-label="Contactez le photographe">Contactez-moi</button>
                       <div class="infos__media"><img src="${this.portrait}" class="infos__image" alt="${this.name}" />
                     </div>`
 
@@ -46,7 +46,7 @@ class Photographer {
   // Carte prix et likes du photographe de la page photographerpage
   photographerDetailsCard = (totalLikes) => {
     let detailsHTML = `<div class="photographer__details">
-                      <div class="details__wrapper">
+                      <div class="details__wrapper" tabindex="0">
                         <p class="details__likes">${totalLikes}</p>
                         <p class="details__price">${this.price}&euro; / jour</p>
                       </div>

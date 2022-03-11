@@ -65,8 +65,6 @@ class Photographerpage {
 
     infoSection.innerHTML = this.photographer.photographerInfos()
     pageWrapper.innerHTML += this.photographer.photographerDetailsCard(totalLikes)
-
-    console.log(totalLikes)
   }
 
   // Fonction permettant d'afficher les médias des photographes dans le DOM

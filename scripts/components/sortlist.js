@@ -102,8 +102,6 @@ class Sortlist {
             btn.textContent++ && btn.classList.add("liked");
             totalCount.textContent++;
         }
-
-        console.log(btn)
     }
 }
 
