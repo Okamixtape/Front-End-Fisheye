@@ -54,8 +54,8 @@ class Lightbox {
 
         window.addEventListener("keyup", (e) => {
             if (this.isLightboxOpen) {
-                e.key === "ArrowLeft" && this.setMedia(this.currentMediaIndex - 1)
-                e.key === "ArrowRight" && this.setMedia(this.currentMediaIndex + 1)
+                e.key === "ArrowLeft" && this.setMediaIndex(this.currentMediaIndex - 1)
+                e.key === "ArrowRight" && this.setMediaIndex(this.currentMediaIndex + 1)
                 e.key === "Escape" && this.closeLightbox()
             }
         })
