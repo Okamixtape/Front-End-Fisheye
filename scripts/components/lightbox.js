@@ -61,6 +61,11 @@ class Lightbox {
         })
     }
 
+    // Fonction permettant de mettre le focus sur la lightbox
+    focusLightbox = () => {
+        document.querySelector(".lightbox").focus();
+    }
+
     // Fonction permettant l'ouverture de la lightbox
     openLightbox = (media) => {
         // Déclaration de l'index
@@ -69,7 +74,11 @@ class Lightbox {
         this.setMediaIndex(mediaIndex)
         this.isLightboxOpen = true
         this.lightbox.classList.add("opened")
+
+        // Mise du focus sur la lightbox
+        this.focusLightbox()
     }
+    
 
     // Fonction permettant la fermeture de la lightbox
     closeLightbox = () => {
@@ -103,9 +112,9 @@ class Lightbox {
     lightboxMediaCard = () => {
         const mediaWrapper = document.querySelector(".lightbox__media")
 
-        const image = `<img src="${this.currentMedia.fullImage}" class="lightbox__image" alt="${this.currentMedia.title}" />`
-        const video = `<video controls class="lightbox__video"><source src="${this.currentMedia.fullVideo}" type="video/webm"></video>`
-        const title = `<h2 class="lightbox__title heading__subtitle">${this.currentMedia.title}</h2>`
+        const image = `<img src="${this.currentMedia.fullImage}" class="lightbox__image" alt="${this.currentMedia.title}" tabindex="0"/>`
+        const video = `<video autoplay class="lightbox__video" tabindex="0"><source src="${this.currentMedia.fullVideo}" type="video/webm"></video>`
+        const title = `<h2 class="lightbox__title heading__subtitle" tabindex="0">${this.currentMedia.title}</h2>`
         // Opérateur (ternaire) conditionnel
         const mediaHTML = this.currentMedia.video ? video : image
 

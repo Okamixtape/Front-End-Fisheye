@@ -22,6 +22,7 @@ class Modal {
     
         form.addEventListener("submit", this.submitForm)
         open.addEventListener("click", this.openModal)
+        open.addEventListener("click", this.focusModal)
         close.addEventListener("click", this.closeModal)
     }
 
@@ -49,30 +50,30 @@ class Modal {
                                 <div class="modal__wrapper">
                                     <div class="modal__content">
                                         <div class="modal__header">
-                                            <h2 class="modal__title">Contactez-moi</h2>
+                                            <h2 class="modal__title" tabindex="0">Contactez-moi</h2>
                                             <h2 class="modal__title">${this.photographer.name}</h2>
-                                            <div class="modal__close"></div>
+                                            <div class="modal__close" aria-label="Fermer le formulaire de contact" tabindex="0"></div>
                                         </div>
                                         <div class="modal__body">
                                             <form class="platform-form">
                                                 <div class="form__row">
-                                                    <label for="firstname">Prénom</label>
-                                                    <input type="text" id="firstname" name="firstname" />
+                                                    <label for="firstname" tabindex="0">Prénom</label>
+                                                    <input type="text" id="firstname" name="firstname" required minlength="2"/>
                                                 </div>
                                                 <div class="form__row">
-                                                    <label for="lastname">Nom</label>
-                                                    <input type="text" id="lastname" name="lastname" />
+                                                    <label for="lastname" tabindex="0">Nom</label>
+                                                    <input type="text" id="lastname" name="lastname" required minlength="2"/>
                                                 </div>
                                                 <div class="form__row">
-                                                    <label for="email">E-mail</label>
-                                                    <input type="email" id="email" name="email" />
+                                                    <label for="email" tabindex="0">E-mail</label>
+                                                    <input type="email" id="email" name="email" required/>
                                                 </div>
                                                 <div class="form__row">
-                                                    <label for="message">Votre message</label>
-                                                    <textarea id="message" name="message" rows="5"></textarea>
+                                                    <label for="message" tabindex="0">Votre message</label>
+                                                    <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
                                                 </div>
                                                 <div class="form__row">
-                                                    <button class="btn modal__button">Envoyer</button>
+                                                    <button class="btn modal__button" aria-label="Envoyer le message">Envoyer</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -96,6 +97,11 @@ class Modal {
     // et de fermeture de la modale de contact
     closeModal = () => {
         this.modal.classList.remove("opened")
+    }
+
+    // Fonction permettant de mettre le focus sur la modale
+    focusModal = () => {
+        document.querySelector(".modal__title").focus();
     }
 }
 

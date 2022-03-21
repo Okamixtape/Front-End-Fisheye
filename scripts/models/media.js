@@ -5,7 +5,7 @@ class Media {
         this.id = id
         this.photographerId = photographerId
         // Opérateur (ternaire) conditionnel
-        this.title = video ? "Vidéo" : title
+        this.title = title
         this.image = image ? `./assets/medias/medias/${image}` : null
         this.video = video ? `./assets/medias/medias/${video}` : null
         this.fullImage = image ? `./assets/medias/medias/${image}` : null
@@ -24,7 +24,7 @@ class Media {
     // Carte photo
     photoCard = () => {
         let photoHTML = `<article class="media-card photo">
-                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue complète">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée">
                                 <img src="${this.image}" class="card__image" alt="${this.title}" />
                             </div>
                             <div class="card__infos">
@@ -39,7 +39,7 @@ class Media {
     // Carte vidéo
     videoCard = () => {
         let videoHTML = `<article class="media-card video">
-                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue complète">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée">
                                 <div class="card__overlay"></div>
                                 <video class="card__video">
                                     <source src="${this.video}" type="video/webm">
