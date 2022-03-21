@@ -24,6 +24,19 @@ class Modal {
         open.addEventListener("click", this.openModal)
         open.addEventListener("click", this.focusModal)
         close.addEventListener("click", this.closeModal)
+
+        // Ajout des écouteurs d'évènements (commandes d'accessitilitté)
+        open.addEventListener("keyup", (e) => {
+            e.key === "Enter" && this.openModal()
+        })
+
+        close.addEventListener("keyup", (e) => {
+            e.key === "Enter" && this.closeModal()
+        })
+
+        window.addEventListener("keyup", (e) => {
+            e.key === "Escape" && this.closeModal()
+        })
     }
 
     // Fonction permettant de soumettre le formulaire
@@ -97,6 +110,7 @@ class Modal {
     // et de fermeture de la modale de contact
     closeModal = () => {
         this.modal.classList.remove("opened")
+        document.querySelector(".infos__button").focus();
     }
 
     // Fonction permettant de mettre le focus sur la modale
