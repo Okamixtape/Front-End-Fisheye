@@ -84,6 +84,7 @@ class Lightbox {
     closeLightbox = () => {
         this.isLightboxOpen = false
         this.lightbox.classList.remove("opened")
+        document.querySelector(".infos__name").focus();
     }
 
     // Fonction permettant de créer l'index de base pour utiliser les flèches avant et arrière

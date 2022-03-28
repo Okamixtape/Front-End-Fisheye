@@ -24,7 +24,7 @@ class Media {
     // Carte photo
     photoCard = () => {
         let photoHTML = `<article class="media-card photo">
-                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée" data-id="${this.id}">
                                 <img src="${this.image}" class="card__image" alt="${this.title}" />
                             </div>
                             <div class="card__infos">
@@ -39,7 +39,7 @@ class Media {
     // Carte vidéo
     videoCard = () => {
         let videoHTML = `<article class="media-card video">
-                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée">
+                            <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée" data-id="${this.id}">
                                 <div class="card__overlay"></div>
                                 <video class="card__video">
                                     <source src="${this.video}" type="video/webm">

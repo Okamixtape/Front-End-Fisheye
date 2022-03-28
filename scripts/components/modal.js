@@ -110,7 +110,7 @@ class Modal {
     // et de fermeture de la modale de contact
     closeModal = () => {
         this.modal.classList.remove("opened")
-        document.querySelector(".infos__button").focus();
+        document.querySelector(".infos__name").focus();
     }
 
     // Fonction permettant de mettre le focus sur la modale
