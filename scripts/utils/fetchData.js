@@ -1,9 +1,7 @@
-// Fonction asynchrone permettant d'aller récupérer les infos JSON
+// Asynchronous function to fetch JSON data
 
 export const fetchData = async (url) => {
-  const data = await fetch(`${url}`)
-    .then((res) => res.json())
-    .then((data) => data)
-
-  return data
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
 }

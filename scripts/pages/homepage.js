@@ -1,34 +1,24 @@
 import createElement from "../factory.js"
 import { fetchData } from "../utils/fetchData.js"
 
-// Création de l'objet "Homepage" pour y récupérer données et les afficher
-
 class Homepage {
   constructor() {
     this.photographers = []
   }
 
-  // Initialisation asynchrone (on attends de récupérer les données pour les afficher)
-  init = async () => {
+  async init() {
     this.photographers = await this.getPhotographers()
     this.displayPhotographers()
   }
 
-  // Récupération des données
-  getPhotographers = async () => {
-    let photographers = []
+  async getPhotographers() {
     const photographersData = await fetchData("./data/photographers.json")
-
-    photographersData.photographers.forEach((p) => photographers.push(createElement("Photographer", p)))
-
-    return photographers
+    return photographersData.photographers.map(p => createElement("Photographer", p))
   }
 
-  // Affichage des données dans la homepage
-  displayPhotographers = async () => {
+  displayPhotographers() {
     const photographerSection = document.querySelector(".homepage__photographers")
-
-    this.photographers.forEach((p) => (photographerSection.innerHTML += p.photographerCard()))
+    photographerSection.innerHTML = this.photographers.map(p => p.photographerCard()).join("")
   }
 }
 

@@ -2,62 +2,68 @@
 
 class Modal {
     constructor() {
-        this.modal
-        this.photographer
+        this.modal = null;
+        this.photographer = null;
     }
 
     // Initialisation des fonctions du constructor Modal (ayant comme paramètre le "photographe")
     init = async (photographer) => {
-        this.photographer = photographer
-        this.modal = await this.modalCard()
+        this.photographer = photographer;
+        this.modal = await this.modalCard();
 
-        this.modalBehavior()
+        this.modalBehavior();
     }
 
     // Attribution des fonctions d'ouverture et fermeture de la modale à l'écoute du clique
     modalBehavior = () => {
-        const form = this.modal.querySelector("form")
-        const open = document.querySelector(".infos__button")
-        const close = this.modal.querySelector(".modal__close")
+        const form = this.modal.querySelector("form");
+        const open = document.querySelector(".infos__button");
+        const close = this.modal.querySelector(".modal__close");
     
-        form.addEventListener("submit", this.submitForm)
-        open.addEventListener("click", this.openModal)
-        open.addEventListener("click", this.focusModal)
-        close.addEventListener("click", this.closeModal)
+        form.addEventListener("submit", this.submitForm);
+        open.addEventListener("click", this.openModal);
+        open.addEventListener("click", this.focusModal);
+        close.addEventListener("click", this.closeModal);
 
-        // Ajout des écouteurs d'évènements (commandes d'accessitilitté)
+        // Ajout des écouteurs d'évènements (commandes d'accessibilité)
         open.addEventListener("keyup", (e) => {
-            e.key === "Enter" && this.openModal()
-        })
+            if (e.key === "Enter") {
+                this.openModal();
+            }
+        });
 
         close.addEventListener("keyup", (e) => {
-            e.key === "Enter" && this.closeModal()
-        })
+            if (e.key === "Enter") {
+                this.closeModal();
+            }
+        });
 
         window.addEventListener("keyup", (e) => {
-            e.key === "Escape" && this.closeModal()
-        })
+            if (e.key === "Escape") {
+                this.closeModal();
+            }
+        });
     }
 
     // Fonction permettant de soumettre le formulaire
     submitForm = (e) => {
-        e.preventDefault()
+        e.preventDefault();
     
         const form = {
             firstname: e.target.querySelector("#firstname").value,
             lastname: e.target.querySelector("#lastname").value,
             email: e.target.querySelector("#email").value,
             message: e.target.querySelector("#message").value,
-        }
+        };
         
-        console.table(form)
+        console.table(form);
     }
 
     // Carte modale de contact (mise dans une promesse pour être utilisé indépendamment de la lightbox)
     modalCard = () => {
         // Promesse permettant le traitement asynchrone des évènements de la page
         return new Promise((resolve) => {
-            const wrapper = document.querySelector(".platform-photographer")
+            const wrapper = document.querySelector(".platform-photographer");
 
             let modalHTML = `<div class="photographer__modal">
                                 <div class="modal__wrapper">
@@ -92,24 +98,24 @@ class Modal {
                                         </div>
                                     </div>
                                 </div>
-                            </div>`
+                            </div>`;
 
             // Injection dans le DOM
-            wrapper.innerHTML += modalHTML
+            wrapper.innerHTML += modalHTML;
 
             // Résolution de la promesse
-            resolve(document.querySelector(".photographer__modal"))
-        })
+            resolve(document.querySelector(".photographer__modal"));
+        });
     }
 
     // Fonction d'ouverture et de fermeture de la modale de contact
     openModal = () => {
-        this.modal.classList.add("opened")
+        this.modal.classList.add("opened");
     }
 
     // et de fermeture de la modale de contact
     closeModal = () => {
-        this.modal.classList.remove("opened")
+        this.modal.classList.remove("opened");
         document.querySelector(".infos__name").focus();
     }
 
@@ -119,4 +125,4 @@ class Modal {
     }
 }
 
-export default Modal
+export default Modal;

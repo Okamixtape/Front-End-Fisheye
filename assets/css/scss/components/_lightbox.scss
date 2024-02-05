@@ -47,7 +47,9 @@
         top: 70px;
         right: 100px;
 
-        background: url("../img/icons/close-lightbox.svg") 100%/100% no-repeat;
+        background: white url("../img/icons/close-lightbox.svg") 100%/100% no-repeat;
+        background-size: contain;
+        border: solid #901c1c 1px;
         transition: ease-in-out 0.2s;
         cursor: pointer;
 
@@ -63,9 +65,15 @@
         width: 30px;
         top: 50%;
 
+        background: white url("../img/icons/arrow.svg") 100%/100% no-repeat;
+        background-size: contain;
+        border: solid #901c1c 1px;
+
         transform: translateY(-50%);
         transition: ease-in-out 0.2s;
         cursor: pointer;
+
+        z-index: 1;
 
         &.disabled {
             opacity: 0.5;
@@ -80,13 +88,10 @@
     &__previous {
         left: 100px;
 
-        background: url("../img/icons/arrow.svg") 100%/100% no-repeat;
         transform: translateY(-50%) rotate(180deg);
     }
 
     &__next {
         right: 100px;
-
-        background: url("../img/icons/arrow.svg") 100%/100% no-repeat;
     }
 }
