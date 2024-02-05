@@ -17,7 +17,7 @@ class Photographer {
               <div class="card__wrapper">
                 <a href="./photographer.html?id=${this.id}" aria-label="Portfolio de ${this.name}">
                   <div class="card__media">
-                    <img src="${this.portrait}" alt="${this.name}" class="card__image" />
+                    <img data-src="${this.portrait}" alt="${this.name}" class="card__image lazy" />
                   </div>
                   <h2 class="card__title heading__title">${this.name}</h2>
                 </a>
@@ -35,7 +35,7 @@ class Photographer {
               <h2 class="infos__country heading__subtitle" aria-label="Pays d'origine du photographe" alt="Pays d'origine du photographe" tabindex="0">${this.country}</h2>
               <p class="infos__tagline" aria-label="Citation du photographe" alt="Citation du photographe" tabindex="0">${this.tagline}</p></div>
               <button class="btn infos__button" aria-label="Contactez le photographe">Contactez-moi</button>
-              <div class="infos__media"><img src="${this.portrait}" class="infos__image" aria-label="Portfolio de ${this.name}" tabindex="0"/>
+              <div class="infos__media"><img data-src="${this.portrait}" class="infos__image lazy" aria-label="Portfolio de ${this.name}" tabindex="0"/>
             </div>`;
   }
 

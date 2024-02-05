@@ -19,7 +19,7 @@ class Media {
     photoCard() {
         return `<article class="media-card photo">
                     <div class="card__media" tabindex="0" aria-label="${this.title}, vue rapprochée" data-id="${this.id}">
-                        <img src="${this.image}" class="card__image" alt="${this.title}" />
+                        <img data-src="${this.image}" class="card__image lazy" alt="${this.title}" />
                     </div>
                     <div class="card__infos">
                         <h3 class="card__title">${this.title}</h3>

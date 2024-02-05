@@ -1,5 +1,6 @@
 import createElement from "../factory.js"
 import { fetchData } from "../utils/fetchData.js"
+import { initLazyLoading } from "../utils/lazyLoading.js"; 
 
 class Homepage {
   constructor() {
@@ -9,6 +10,7 @@ class Homepage {
   async init() {
     this.photographers = await this.getPhotographers()
     this.displayPhotographers()
+    initLazyLoading();
   }
 
   async getPhotographers() {

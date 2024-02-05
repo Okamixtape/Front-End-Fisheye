@@ -87,7 +87,7 @@ class Lightbox {
 
     lightboxMediaCard = () => {
         const mediaWrapper = document.querySelector(".lightbox__media");
-        const image = `<img src="${this.currentMedia.fullImage}" class="lightbox__image" alt="${this.currentMedia.title}" tabindex="0"/>`;
+        const image = `<img data-src="${this.currentMedia.fullImage}" class="lightbox__image lazy" alt="${this.currentMedia.title}" tabindex="0"/>`;
         const video = `<video autoplay class="lightbox__video" tabindex="0"><source src="${this.currentMedia.fullVideo}" type="video/webm"></video>`;
         const title = `<h2 class="lightbox__title heading__subtitle" tabindex="0">${this.currentMedia.title}</h2>`;
         const mediaHTML = this.currentMedia.video ? video : image;

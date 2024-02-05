@@ -3,6 +3,7 @@ import Lightbox from "../components/lightbox.js";
 import Modal from "../components/modal.js";
 import Sortlist from "../components/sortlist.js";
 import { fetchData } from "../utils/fetchData.js";
+import { initLazyLoading } from "../utils/lazyLoading.js"; 
 
 class Photographerpage {
   constructor() {
@@ -26,6 +27,14 @@ class Photographerpage {
     new Sortlist(this.medias);
     new Modal().init(this.photographer);
     new Lightbox().init(this.medias);
+
+    this.initLazyLoading(); // Call initLazyLoading() after modifying the DOM
+
+    // Listen for DOM changes and call initLazyLoading() when necessary
+    const observer = new MutationObserver(() => {
+      this.initLazyLoading();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   };
 
   redirect = () => {
@@ -68,6 +77,10 @@ class Photographerpage {
     const mediasBody = document.querySelector(".medias__list");
 
     mediasBody.innerHTML = this.medias.map((p) => p.mediaCard()).join("");
+  };
+
+  initLazyLoading = () => {
+    initLazyLoading();
   };
 }
 

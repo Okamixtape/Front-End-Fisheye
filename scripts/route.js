@@ -5,11 +5,11 @@ class Route {
     this.routes = new Map();
   }
 
-  set = (path, page) => {
+  set(path, page) {
     this.routes.set(path, page);
   }
 
-  get = () => {
+  get() {
     const pathname = new URL(window.location.href).pathname;
     const matchingRoute = Array.from(this.routes.entries()).find(([path]) => pathname.includes(path));
     if (matchingRoute) {
